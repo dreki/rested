@@ -56,13 +56,17 @@ class Request {
          * Determine which method to call, and call it.
          */
         // Class to use.
-        $class = $uri[0];
+        $this->_class = $uri[0];
+    }
 
-        if (class_exists($class)) {
-        }
-        else {
-            throw new \rested\ClientErrorException();
-        }
+    /**
+     * Accessor for class the route corresponds to.
+     *
+     * @return string
+     * @author sgilbertson
+     **/
+    public function get_class() {
+        return $this->_class;
     }
 
     /**
@@ -70,7 +74,7 @@ class Request {
      *
      * @var string
      **/
-    private $class;
+    private $_class;
 
     /**
      * Configuration/parameters to give to method. Can include things like POST/GET params.
@@ -78,7 +82,7 @@ class Request {
      * @var array
      * @see $method
      **/
-    private $config;
+    private $_config;
 
     /**
      * ID to hand to certain types of methods (e.g. for when retrieving one record).
@@ -86,7 +90,7 @@ class Request {
      * @var string|int
      * @see $method
      **/
-    private $id = null;
+    private $_id = null;
 
     /**
      * Method of class we will call.
@@ -94,5 +98,5 @@ class Request {
      * @var string
      * @see $class
      **/
-    private $method;
+    private $_method;
 } // END class Request

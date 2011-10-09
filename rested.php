@@ -29,7 +29,11 @@ class Rested {
      **/
     public function go() {
         // var_dump($request_uri);
-        diag_dump($this->_request);
+        // diag_dump($this->_request);
+
+        if (!class_exists($this->_request->get_class())) {
+            throw new \rested\ClientErrorException();
+        }
     }
 
     /**
