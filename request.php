@@ -30,9 +30,6 @@ class Request {
          */
         $uri = explode('/', $uri);
 
-        diag("before");
-        diag_dump($uri);
-
         // Get rid of empty strings where '/' were.
         $uri = array_filter(
             $uri,
@@ -48,9 +45,6 @@ class Request {
 
         // Reindex array, so it goes 0, 1, 2, etc., again.
         $uri = array_values($uri);
-
-        diag("after");
-        diag_dump($uri);
 
         /*
          * Determine which method to call, and call it.
